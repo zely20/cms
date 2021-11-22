@@ -25,15 +25,4 @@ public class Page{
 
     public Page() {
     }
-
-    public Page(String title, String description, String slug, String menuLabel, String h1, String content, LocalDateTime publishedAt, Integer priority) {
-        this.title = title;
-        this.description = description;
-        this.slug = slug;
-        this.menuLabel = menuLabel;
-        this.h1 = h1;
-        this.content = content;
-        this.publishedAt = publishedAt;
-        this.priority = priority;
-    }
 }

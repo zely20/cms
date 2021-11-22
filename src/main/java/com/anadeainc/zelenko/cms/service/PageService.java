@@ -4,7 +4,6 @@ import com.anadeainc.zelenko.cms.entity.Page;
 import com.anadeainc.zelenko.cms.repository.PageRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,15 +21,11 @@ public class PageService {
     }
 
     public Page add(Page page) {
-        Page page1 = new Page("title", "descr", "slug", "label", "h1", "content", LocalDateTime.now(), 2);
-        if(page.getH1() == null || page.getH1().equals("")) {
-           return pageRepository.save(page1);
-        }
-       return pageRepository.save(page);
+        return pageRepository.save(page);
     }
 
     public Page getById(Long id) {
-        Optional<Page> row  = pageRepository.findById(id);
+        Optional<Page> row = pageRepository.findById(id);
         if (row.isPresent()) {
             return row.get();
         }
