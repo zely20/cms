@@ -31,4 +31,10 @@ public class IndexController {
         model.addAttribute("page", pageService.getById(id));
         return "edit";
     }
+
+    @GetMapping("/content/{id}")
+    public String contentPage(@PathVariable Integer id, Model model){
+        model.addAttribute("page", pageService.getById(id));
+        return "content";
+    }
 }
