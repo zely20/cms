@@ -24,7 +24,7 @@ public class PageService {
         return pageRepository.save(page);
     }
 
-    public Page getById(Long id) {
+    public Page getById(Integer id) {
         Optional<Page> row = pageRepository.findById(id);
         if (row.isPresent()) {
             return row.get();
@@ -32,7 +32,7 @@ public class PageService {
         return null;
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         pageRepository.deleteById(id);
     }
 }

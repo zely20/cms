@@ -1,6 +1,10 @@
 package com.anadeainc.zelenko.cms.entity;
 
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,26 +15,28 @@ public class Page{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String title;
     private String description;
     private String slug;
     @Column(name = "menu_label")
     private String menuLabel;
     private String h1;
+    @Type(type = "org.hibernate.type.TextType")
     private String content;
     @Column(name = "published_at")
-    private LocalDateTime publishedAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate publishedAt;
     private Integer priority;
 
     public Page() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,11 +88,11 @@ public class Page{
         this.content = content;
     }
 
-    public LocalDateTime getPublishedAt() {
+    public LocalDate getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(LocalDateTime publishedAt) {
+    public void setPublishedAt(LocalDate publishedAt) {
         this.publishedAt = publishedAt;
     }
 

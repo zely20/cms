@@ -3,11 +3,12 @@ package com.anadeainc.zelenko.cms.controler;
 import com.anadeainc.zelenko.cms.entity.Page;
 import com.anadeainc.zelenko.cms.service.PageService;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController()
+@Controller()
 @RequestMapping("pages")
 public class PageController {
 
@@ -17,27 +18,28 @@ public class PageController {
         this.pageService = pageService;
     }
 
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Page> findAllByOrderByPriority() {
         return pageService.findAllByOrderByPriority();
     }
 
-    @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable Long id) {
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        System.out.println(id);
         pageService.delete(id);
+        return "redirect:/index";
     }
 
     @GetMapping("{id}")
-    public Page getById(@PathVariable Long id) {
+    public Page getById(@PathVariable Integer id) {
         return pageService.getById(id);
     }
 
-    @PostMapping("save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Page create(@RequestBody Page page) {
-        System.out.println("create");
-        return pageService.add(page);
+    @PostMapping("/save")
+    public String createPost(@ModelAttribute Page page) {
+        pageService.add(page);
+        return "redirect:/index";
     }
 }
