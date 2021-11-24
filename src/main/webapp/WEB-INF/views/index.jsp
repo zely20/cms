@@ -37,7 +37,7 @@
                     <td><c:out value="${page.title}"/></td>
                     <td><c:out value="${page.description}"/></td>
                     <td><a href="<c:url value='/pages/${page.id}'/>">${page.menuLabel}</a></td>
-                    <td><a href="<c:url value='/edit?id=${page.id}'/>">Edit topic</a></td>
+                    <td><a href="<c:url value='/edit/${page.id}'/>">Edit page</a></td>
                     <td><a href="<c:url value='/pages/delete/${page.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
