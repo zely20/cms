@@ -38,6 +38,8 @@ public class PageController {
 
     @PostMapping("/save")
     public String createPost(@ModelAttribute Page page) {
+        String one = page.getContent();
+        page.setContent(one);
         pageService.add(page);
         return "redirect:/index";
     }
